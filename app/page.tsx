@@ -3,7 +3,6 @@ import useData from "./hooks/useData";
 
 const HomePage = () => {
   const { data, isLoading, isError } = useData("/profile");
-  console.log(data);
   if (isLoading) {
     return <div>Loading...</div>;
   }
