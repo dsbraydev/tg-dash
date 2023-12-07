@@ -1,6 +1,6 @@
 "use client";
 import useData from "./hooks/useData";
-
+import Dashboard from "./components/Dashboard";
 const HomePage = () => {
   const { data, isLoading, isError } = useData("/profile");
   if (isLoading) {
@@ -12,9 +12,7 @@ const HomePage = () => {
   }
 
   return (
-    <div>
-      <h1>Home Page</h1>
-    </div>
+    <Dashboard />
   );
 };
 

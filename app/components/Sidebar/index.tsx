@@ -1,36 +1,38 @@
 "use client";
-import { useState } from 'react';
-import Link from 'next/link';
-import Image from 'next/image';
+import { useState } from "react";
+import Link from "next/link";
+import Image from "next/image";
 
 const Sidebar = () => {
   const [sidebarToggle, setSidebarToggle] = useState(false);
-  const [selected, setSelected] = useState('Dashboard');
-  const [page, setPage] = useState('');
+  const [selected, setSelected] = useState("Dashboard");
+  const [page, setPage] = useState("");
 
   const handleSidebarToggle = () => {
     setSidebarToggle(!sidebarToggle);
   };
 
   const handleMenuClick = (menuItem: string) => {
-    setSelected((prevSelected) => (prevSelected === menuItem ? '' : menuItem));
+    setSelected((prevSelected) => (prevSelected === menuItem ? "" : menuItem));
   };
 
   return (
     <aside
-      className={`absolute left-0 top-0 z-9999 flex h-screen w-72.5 flex-col overflow-y-hidden bg-black duration-300 ease-linear dark:bg-boxdark lg:static ${sidebarToggle ? '' : 'lg:translate-x-0'}`}
+      className={`absolute left-0 top-0 z-9999 flex h-screen w-72.5 flex-col overflow-y-hidden bg-black duration-300 ease-linear dark:bg-boxdark lg:static ${
+        sidebarToggle ? "" : "lg:translate-x-0"
+      }`}
       onClick={() => setSidebarToggle(false)}
     >
       <div className="flex items-center justify-between gap-2 px-6 py-5.5 lg:py-6.5">
         <Link href="/" legacyBehavior>
-          <a style={{ width: 'auto', height: "auto", position: 'relative' }}>
+          <a style={{ width: "auto", height: "auto", position: "relative" }}>
             <Image
               src="/images/logo/logo.svg"
               alt="Logo"
               height={0}
               width={0}
               priority
-              style={{ width: '100%', height: 'auto' }}
+              style={{ width: "100%", height: "auto" }}
             />
           </a>
         </Link>
@@ -51,21 +53,30 @@ const Sidebar = () => {
           </svg>
         </button>
       </div>
-      <div
-        className="no-scrollbar flex flex-col overflow-y-auto duration-300 ease-linear"
-      >
+      <div className="no-scrollbar flex flex-col overflow-y-auto duration-300 ease-linear">
         <nav className="mt-5 py-4 px-4 lg:mt-9 lg:px-6">
           <div>
-            <h3 className="mb-4 ml-4 text-sm font-medium text-bodydark2">MENU</h3>
+            <h3 className="mb-4 ml-4 text-sm font-medium text-bodydark2">
+              MENU
+            </h3>
 
             <ul className="mb-6 flex flex-col gap-1.5">
               <li>
                 <a
-                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${selected === 'Dashboard' ? 'bg-graydark dark:bg-meta-4' : ''}`}
+                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${
+                    selected === "Dashboard" ? "bg-graydark dark:bg-meta-4" : ""
+                  }`}
                   href="#"
-                  onClick={() => handleMenuClick('Dashboard')}
+                  onClick={() => handleMenuClick("Dashboard")}
                 >
-                  <svg className="fill-current" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <svg
+                    className="fill-current"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 18 18"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
                     <path
                       d="M6.10322 0.956299H2.53135C1.5751 0.956299 0.787598 1.7438 0.787598 2.70005V6.27192C0.787598 7.22817 1.5751 8.01567 2.53135 8.01567H6.10322C7.05947 8.01567 7.84697 7.22817 7.84697 6.27192V2.72817C7.8751 1.7438 7.0876 0.956299 6.10322 0.956299ZM6.60947 6.30005C6.60947 6.5813 6.38447 6.8063 6.10322 6.8063H2.53135C2.2501 6.8063 2.0251 6.5813 2.0251 6.30005V2.72817C2.0251 2.44692 2.2501 2.22192 2.53135 2.22192H6.10322C6.38447 2.22192 6.60947 2.44692 6.60947 2.72817V6.30005Z"
                       fill=""
@@ -83,11 +94,11 @@ const Sidebar = () => {
                       fill=""
                     />
                   </svg>
-
                   Dashboard
-
                   <svg
-                    className={`absolute right-4 top-1/2 -translate-y-1/2 fill-current ${selected === 'Dashboard' ? 'rotate-180' : ''}`}
+                    className={`absolute right-4 top-1/2 -translate-y-1/2 fill-current ${
+                      selected === "Dashboard" ? "rotate-180" : ""
+                    }`}
                     width="20"
                     height="20"
                     viewBox="0 0 20 20"
@@ -103,11 +114,17 @@ const Sidebar = () => {
                   </svg>
                 </a>
 
-                <div className={`overflow-hidden ${selected === 'Dashboard' ? 'block' : 'hidden'}`}>
+                <div
+                  className={`overflow-hidden ${
+                    selected === "Dashboard" ? "block" : "hidden"
+                  }`}
+                >
                   <ul className="mt-4 mb-5.5 flex flex-col gap-2.5 pl-6">
                     <li>
                       <a
-                        className={`group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white ${page === 'ecommerce' && '!text-white'}`}
+                        className={`group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white ${
+                          page === "ecommerce" && "!text-white"
+                        }`}
                         href="index.html"
                       >
                         eCommerce
@@ -119,11 +136,20 @@ const Sidebar = () => {
 
               <li>
                 <a
-                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${selected === 'Profile' ? 'bg-graydark' : ''}`}
+                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${
+                    selected === "Profile" ? "bg-graydark" : ""
+                  }`}
                   href="profile.html"
-                  onClick={() => handleMenuClick('Profile')}
+                  onClick={() => handleMenuClick("Profile")}
                 >
-                  <svg className="fill-current" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <svg
+                    className="fill-current"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 18 18"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
                     <path
                       d="M9.0002 7.79065C11.0814 7.79065 12.7689 6.1594 12.7689 4.1344C12.7689 2.1094 11.0814 0.478149 9.0002 0.478149C6.91895 0.478149 5.23145 2.1094 5.23145 4.1344C5.23145 6.1594 6.91895 7.79065 9.0002 7.79065ZM9.0002 1.7719C10.3783 1.7719 11.5033 2.84065 11.5033 4.16252C11.5033 5.4844 10.3783 6.55315 9.0002 6.55315C7.62207 6.55315 6.49707 5.4844 6.49707 4.16252C6.49707 2.84065 7.62207 1.7719 9.0002 1.7719Z"
                       fill=""
@@ -133,24 +159,28 @@ const Sidebar = () => {
                       fill=""
                     />
                   </svg>
-
                   Profile
                 </a>
               </li>
             </ul>
           </div>
           <div>
-            <h3 className="mb-4 ml-4 text-sm font-medium text-bodydark2">OTHERS</h3>
+            <h3 className="mb-4 ml-4 text-sm font-medium text-bodydark2">
+              OTHERS
+            </h3>
             <ul className="mb-6 flex flex-col gap-1.5">
               <li>
                 <a
-                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${(selected === 'AuthPages') ||
-                    (page === 'register' || page === 'login' || page === 'forgetPassword')
-                    ? 'bg-graydark dark:bg-meta-4'
-                    : ''
-                    }`}
+                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${
+                    selected === "AuthPages" ||
+                    page === "register" ||
+                    page === "login" ||
+                    page === "forgetPassword"
+                      ? "bg-graydark dark:bg-meta-4"
+                      : ""
+                  }`}
                   href="#"
-                  onClick={() => handleMenuClick('AuthPages')}
+                  onClick={() => handleMenuClick("AuthPages")}
                 >
                   <svg
                     className="fill-current"
@@ -183,8 +213,9 @@ const Sidebar = () => {
                   </svg>
                   Authentication
                   <svg
-                    className={`absolute right-4 top-1/2 -translate-y-1/2 fill-current ${selected === 'AuthPages' ? 'rotate-180' : ''
-                      }`}
+                    className={`absolute right-4 top-1/2 -translate-y-1/2 fill-current ${
+                      selected === "AuthPages" ? "rotate-180" : ""
+                    }`}
                     width="20"
                     height="20"
                     viewBox="0 0 20 20"
@@ -200,24 +231,30 @@ const Sidebar = () => {
                   </svg>
                 </a>
 
-                <div className={`overflow-hidden ${selected === 'AuthPages' ? 'block' : 'hidden'}`}>
+                <div
+                  className={`overflow-hidden ${
+                    selected === "AuthPages" ? "block" : "hidden"
+                  }`}
+                >
                   <ul className="mt-4 mb-3 flex flex-col gap-2 pl-6">
                     <li>
                       <a
-                        className={`group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white ${page === 'signin' ? 'text-white' : ''
-                          }`}
+                        className={`group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white ${
+                          page === "signin" ? "text-white" : ""
+                        }`}
                         href="signin.html"
-                        onClick={() => setPage('signin')}
+                        onClick={() => setPage("signin")}
                       >
                         Sign In
                       </a>
                     </li>
                     <li>
                       <a
-                        className={`group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white ${page === 'signup' ? 'text-white' : ''
-                          }`}
+                        className={`group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white ${
+                          page === "signup" ? "text-white" : ""
+                        }`}
                         href="signup.html"
-                        onClick={() => setPage('signup')}
+                        onClick={() => setPage("signup")}
                       >
                         Sign Up
                       </a>
@@ -234,4 +271,3 @@ const Sidebar = () => {
 };
 
 export default Sidebar;
-
