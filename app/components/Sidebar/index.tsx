@@ -13,11 +13,8 @@ const Sidebar = () => {
   };
 
   const handleMenuClick = (menuItem: string) => {
-    console.log("test")
     setSelected((prevSelected) => (prevSelected === menuItem ? '' : menuItem));
   };
-
-
 
   return (
     <aside
