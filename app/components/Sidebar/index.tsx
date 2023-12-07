@@ -135,7 +135,7 @@ const Sidebar = () => {
               </li>
 
               <li>
-                <Link href="/" legacyBehavior>
+                <Link href="/profile" legacyBehavior>
                   <a
                     className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${
                       selected === "Profile" ? "bg-graydark" : ""
@@ -237,7 +237,7 @@ const Sidebar = () => {
                 >
                   <ul className="mt-4 mb-3 flex flex-col gap-2 pl-6">
                     <li>
-                      <Link href="/" legacyBehavior>
+                      <Link href="/signin" legacyBehavior>
                         <a
                           className={`group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white ${
                             page === "signin" ? "text-white" : ""
@@ -248,7 +248,7 @@ const Sidebar = () => {
                       </Link>
                     </li>
                     <li>
-                      <Link href="/" legacyBehavior>
+                      <Link href="/signup" legacyBehavior>
                         <a
                           className={`group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white ${
                             page === "signup" ? "text-white" : ""
