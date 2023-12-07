@@ -1,3 +1,5 @@
+import ChartOne from "./ChartOne";
+import ChartTwo from "./ChartTwo";
 const Dashboard = () => {
   return (
     <div className="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10">
@@ -203,8 +205,8 @@ const Dashboard = () => {
       </div>
 
       <div className="mt-4 grid grid-cols-12 gap-4 md:mt-6 md:gap-6 2xl:mt-7.5 2xl:gap-7.5">
-        {/* CHART 1 */}
-        {/* CHART 2 */}
+        <ChartOne />
+        <ChartTwo />
       </div>
     </div>
   );
