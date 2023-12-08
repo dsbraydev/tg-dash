@@ -1,4 +1,3 @@
-"use client";
 import Dashboard from "./components/Dashboard";
 // import useData from "./hooks/useData";
 
@@ -11,7 +10,6 @@ const HomePage = () => {
   // if (isError) {
   //   return <div>Error loading data</div>;
   // }
-
   return <Dashboard />;
 };
 

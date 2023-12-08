@@ -1,17 +1,26 @@
-import useSWR from 'swr';
+import useSWR from "swr";
 
 const fetchData = async (url: string) => {
   const API = process.env.MY_API;
   const apiUrl = `${API}${url}`;
 
-  const response = await fetch(apiUrl, {
-    headers: {
-      // No headers needed
-    },
-  });
+  try {
+    const response = await fetch(apiUrl, {
+      headers: {
+        // No headers needed
+      },
+    });
 
-  const data = await response.json();
-  return data;
+    if (!response.ok) {
+      throw new Error(`Failed to fetch data: ${response.statusText}`);
+    }
+
+    const data = await response.json();
+    return data;
+  } catch (error: any) {
+    console.error("Error fetching data:", error.message);
+    throw error;
+  }
 };
 
 const useData = (url: string) => {
@@ -21,6 +30,7 @@ const useData = (url: string) => {
     data,
     isLoading: !data && !error,
     isError: error,
+    errorMessage: error ? error.message : null,
   };
 };
 
