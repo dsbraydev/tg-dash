@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Sidebar from "./components/Sidebar";
 import Header from "./components/Header";
+
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -22,9 +23,7 @@ export default function RootLayout({
           <Sidebar />
           <div className="relative flex flex-1 flex-col overflow-y-auto overflow-x-hidden">
             <Header />
-            <main>
-              {children}
-            </main>
+            <main>{children}</main>
           </div>
         </div>
       </body>

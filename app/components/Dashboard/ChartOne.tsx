@@ -1,6 +1,11 @@
+"use client";
 import React from "react";
+import { SERIES, OPTIONS } from "./data";
+import dynamic from "next/dynamic";
 
 const ChartOne = () => {
+  const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
+
   return (
     <div className="col-span-12 rounded-sm border border-stroke bg-white px-5 pt-7.5 pb-5 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:col-span-8">
       <div className="flex flex-wrap items-start justify-between gap-3 sm:flex-nowrap">
@@ -39,7 +44,14 @@ const ChartOne = () => {
         </div>
       </div>
       <div>
-        <div id="chartOne" className="-ml-5"></div>
+        <Chart
+          type="area"
+          // @ts-ignore
+          options={OPTIONS}
+          series={SERIES}
+          height={335}
+          width="100%"
+        />
       </div>
     </div>
   );
