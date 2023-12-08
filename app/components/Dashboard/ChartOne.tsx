@@ -2,7 +2,6 @@
 import React from "react";
 import { SERIES, OPTIONS } from "./data";
 import dynamic from "next/dynamic";
-import "../../../public/style.css";
 
 const ChartOne = () => {
   const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
@@ -50,8 +49,8 @@ const ChartOne = () => {
           // @ts-ignore
           options={OPTIONS}
           series={SERIES}
-          height={200}
-          width={500}
+          height={335}
+          width="100%"
         />
       </div>
     </div>

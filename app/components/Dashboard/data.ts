@@ -11,9 +11,6 @@ export const SERIES = [
 ];
 
 export const OPTIONS = {
-    chart: {
-        id: "asd"
-    },
     legend: {
         show: false,
         position: "top",
@@ -23,6 +20,7 @@ export const OPTIONS = {
     chart: {
         fontFamily: "Satoshi, sans-serif",
         height: 335,
+        width: "100%",
         type: "area",
         dropShadow: {
             enabled: true,
