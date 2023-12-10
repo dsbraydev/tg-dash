@@ -1,7 +1,29 @@
-import React from "react";
+"use client";
 import Image from "next/image";
+import useData from "@/app/hooks/useData";
 
 function Profile() {
+  const { data, isLoading, isError } = useData("/profile");
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (isError) {
+    return <div>Error loading data</div>;
+  }
+
+  function formatNumber(number: number): string {
+    if (number >= 1000) {
+      const formattedNumber = (number / 1000).toFixed(0);
+      return `${formattedNumber}k`;
+    }
+
+    return number.toString();
+  }
+
+  const { about, followers, following, name, posts, title } = data;
+
   return (
     <div className="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10">
       <div className="mx-auto max-w-242.5">
@@ -117,25 +139,25 @@ function Profile() {
             </div>
             <div className="mt-4">
               <h3 className="mb-1.5 text-2xl font-medium text-black dark:text-white">
-                Danish Heilium
+                {name}
               </h3>
-              <p className="font-medium">Ui/Ux Designer</p>
+              <p className="font-medium">{title}</p>
               <div className="dark:bg-[#37404F] mx-auto mt-4.5 mb-5.5 grid max-w-94 grid-cols-3 rounded-md border border-stroke py-2.5 shadow-1 dark:border-strokedark">
                 <div className="flex flex-col items-center justify-center gap-1 border-r border-stroke px-4 dark:border-strokedark xsm:flex-row">
                   <span className="font-semibold text-black dark:text-white">
-                    259
+                    {formatNumber(posts)}
                   </span>
                   <span className="text-sm">Posts</span>
                 </div>
                 <div className="flex flex-col items-center justify-center gap-1 border-r border-stroke px-4 dark:border-strokedark xsm:flex-row">
                   <span className="font-semibold text-black dark:text-white">
-                    129K
+                    {formatNumber(followers)}
                   </span>
                   <span className="text-sm">Followers</span>
                 </div>
                 <div className="flex flex-col items-center justify-center gap-1 px-4 xsm:flex-row">
                   <span className="font-semibold text-black dark:text-white">
-                    2K
+                    {formatNumber(following)}
                   </span>
                   <span className="text-sm">Following</span>
                 </div>
@@ -145,13 +167,7 @@ function Profile() {
                 <h4 className="font-medium text-black dark:text-white">
                   About Me
                 </h4>
-                <p className="mt-4.5 font-medium text-sm">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Pellentesque posuere fermentum urna, eu condimentum mauris
-                  tempus ut. Donec fermentum blandit aliquet. Etiam dictum
-                  dapibus ultricies. Sed vel aliquet libero. Nunc a augue
-                  fermentum, pharetra ligula sed, aliquam lacus.
-                </p>
+                <p className="mt-4.5 font-medium text-sm">{about}</p>
               </div>
 
               <div className="mt-6.5">
