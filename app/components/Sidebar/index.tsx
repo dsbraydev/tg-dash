@@ -2,11 +2,13 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 
 const Sidebar = () => {
+  const pathName = usePathname();
+
   const [sidebarToggle, setSidebarToggle] = useState(false);
   const [selected, setSelected] = useState("Dashboard");
-  const [page, setPage] = useState("");
 
   const handleSidebarToggle = () => {
     setSidebarToggle(!sidebarToggle);
@@ -64,7 +66,9 @@ const Sidebar = () => {
               <li>
                 <div
                   className={`group relative flex items-center gap-2.5 cursor-pointer rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${
-                    selected === "Dashboard" ? "bg-graydark dark:bg-meta-4" : ""
+                    selected === "Dashboard" || pathName === "/"
+                      ? "bg-graydark dark:bg-meta-4"
+                      : ""
                   }`}
                   onClick={() => handleMenuClick("Dashboard")}
                 >
@@ -123,7 +127,7 @@ const Sidebar = () => {
                       <Link href="/" legacyBehavior>
                         <a
                           className={`group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white ${
-                            page === "ecommerce" && "!text-white"
+                            pathName === "ecommerce" && "!text-white"
                           }`}
                         >
                           eCommerce
@@ -138,7 +142,7 @@ const Sidebar = () => {
                 <Link href="/profile" legacyBehavior>
                   <a
                     className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${
-                      selected === "Profile" ? "bg-graydark" : ""
+                      pathName === "/profile" ? "bg-graydark" : ""
                     }`}
                   >
                     <svg
@@ -173,9 +177,9 @@ const Sidebar = () => {
                 <div
                   className={`group relative flex items-center gap-2.5 cursor-pointer rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${
                     selected === "AuthPages" ||
-                    page === "register" ||
-                    page === "login" ||
-                    page === "forgetPassword"
+                    pathName === "/signin" ||
+                    pathName === "/singup" ||
+                    pathName === "/settings"
                       ? "bg-graydark dark:bg-meta-4"
                       : ""
                   }`}
@@ -240,7 +244,7 @@ const Sidebar = () => {
                       <Link href="/signin" legacyBehavior>
                         <a
                           className={`group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white ${
-                            page === "signin" ? "text-white" : ""
+                            pathName === "/signin" ? "text-white" : ""
                           }`}
                         >
                           Sign In
@@ -251,7 +255,7 @@ const Sidebar = () => {
                       <Link href="/signup" legacyBehavior>
                         <a
                           className={`group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white ${
-                            page === "signup" ? "text-white" : ""
+                            pathName === "/signup" ? "text-white" : ""
                           }`}
                         >
                           Sign Up
