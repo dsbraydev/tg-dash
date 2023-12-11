@@ -3,8 +3,9 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-
+import { useSidebar } from "@/app/context/SidebarContext";
 const Sidebar = () => {
+  const { sidebarOpen, toggleSidebar } = useSidebar();
   const pathName = usePathname();
 
   const [sidebarToggle, setSidebarToggle] = useState(false);
@@ -20,9 +21,9 @@ const Sidebar = () => {
 
   return (
     <aside
-      className={`absolute left-0 top-0 z-9999 flex h-screen w-72.5 flex-col overflow-y-hidden bg-black duration-300 ease-linear dark:bg-boxdark lg:static ${
-        sidebarToggle ? "" : "lg:translate-x-0"
-      }`}
+      className={`flex h-screen w-72.5 flex-col overflow-y-hidden bg-black duration-300 ease-linear dark:bg-boxdark ${
+        sidebarOpen ? "absolute left-0 top-0 z-9999" : "hidden lg:flex"
+      } lg:static lg:translate-x-0`}
       onClick={() => setSidebarToggle(false)}
     >
       <div className="flex items-center justify-between gap-2 px-6 py-5.5 lg:py-6.5">
@@ -39,7 +40,7 @@ const Sidebar = () => {
           </a>
         </Link>
 
-        <button className="block lg:hidden" onClick={handleSidebarToggle}>
+        <button className="block lg:hidden" onClick={toggleSidebar}>
           <svg
             className="fill-current"
             width="20"

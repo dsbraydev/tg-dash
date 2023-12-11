@@ -6,7 +6,7 @@ const Stats = () => {
   const { data, isLoading, isError } = useData("/stats");
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return null;
   }
 
   if (isError) {

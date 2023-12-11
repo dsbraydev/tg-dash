@@ -5,13 +5,13 @@ interface UserProps {
   name: string;
   title: string;
 }
-interface UserProps {
+interface UserDropdownProps {
   toggleDropdown: () => void;
   isDropdownOpen: boolean;
   user: UserProps;
 }
 
-const User: React.FC<UserProps> = ({
+const User: React.FC<UserDropdownProps> = ({
   toggleDropdown,
   isDropdownOpen,
   user,
