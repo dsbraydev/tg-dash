@@ -1,7 +1,7 @@
 import useSWR from "swr";
 
 const fetchData = async (url: string) => {
-  const API = process.env.MY_API;
+  const API = process.env.NEXT_PUBLIC_MY_API;
   const apiUrl = `${API}${url}`;
 
   try {
@@ -12,11 +12,7 @@ const fetchData = async (url: string) => {
     });
 
     if (!response.ok) {
-      if (response.status === 404) {
-        throw new Error("Resource not found");
-      } else {
-        throw new Error(`Failed to fetch data: ${response.statusText}`);
-      }
+      throw new Error(`Failed to fetch data: ${response.statusText}`);
     }
 
     const data = await response.json();
@@ -28,21 +24,7 @@ const fetchData = async (url: string) => {
 };
 
 const useData = (url: string) => {
-  const { data, error, mutate } = useSWR(url, () => fetchData(url), {
-    revalidateOnMount: true,
-    revalidateOnFocus: true,
-    onErrorRetry: (error, key, config, revalidate, { retryCount }) => {
-      if (retryCount < 3) {
-        const delay = Math.min(1000 * 2 ** retryCount, 30000);
-        setTimeout(() => mutate(), delay);
-      }
-
-      console.error(
-        `Error fetching data, retrying attempt ${retryCount + 1}:`,
-        error.message
-      );
-    },
-  });
+  const { data, error } = useSWR(url, () => fetchData(url));
 
   return {
     data,
