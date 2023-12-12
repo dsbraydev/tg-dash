@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import useData from "@/app/hooks/useData";
-
+import Link from "next/link";
 function Profile() {
   const { data, isLoading, isError } = useData("/profile");
 
@@ -35,9 +35,9 @@ function Profile() {
           <nav>
             <ol className="flex items-center gap-2">
               <li>
-                <a className="font-medium" href="index.html">
-                  Dashboard /
-                </a>
+                <Link href="/" legacyBehavior>
+                  <a className="font-medium">Dashboard /</a>
+                </Link>
               </li>
               <li className="text-primary">Profile</li>
             </ol>

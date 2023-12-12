@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 const Settings = () => {
   return (
     <div className="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10">
@@ -11,9 +12,9 @@ const Settings = () => {
           <nav>
             <ol className="flex items-center gap-2">
               <li>
-                <a className="font-medium" href="index.html">
-                  Dashboard /
-                </a>
+                <Link href="/" legacyBehavior>
+                  <a className="font-medium">Dashboard /</a>
+                </Link>
               </li>
               <li className="font-medium text-primary">Settings</li>
             </ol>

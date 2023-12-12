@@ -1,5 +1,5 @@
 import Image from "next/image";
-
+import Link from "next/link";
 interface AuthProps {
   children: React.ReactNode;
 }
@@ -15,9 +15,9 @@ const Auth: React.FC<AuthProps> = ({ children }) => {
         <nav>
           <ol className="flex items-center gap-2">
             <li>
-              <a className="font-medium" href="index.html">
-                Dashboard /
-              </a>
+              <Link href="/" legacyBehavior>
+                <a className="font-medium">Dashboard /</a>
+              </Link>
             </li>
             <li className="font-medium text-primary">Sign In</li>
           </ol>
@@ -28,26 +28,28 @@ const Auth: React.FC<AuthProps> = ({ children }) => {
         <div className="flex flex-wrap items-center">
           <div className="hidden w-full xl:block xl:w-1/2">
             <div className="py-17.5 px-26 text-center">
-              <a className="mb-5.5 inline-block" href="index.html">
-                <Image
-                  className="hidden dark:block"
-                  src="/images/logo/logo.svg"
-                  alt="Logo"
-                  height={0}
-                  width={0}
-                  priority
-                  style={{ width: "100%", height: "auto" }}
-                />
-                <Image
-                  className="dark:hidden"
-                  src="/images/logo/logo-dark.svg"
-                  alt="Logo"
-                  height={0}
-                  width={0}
-                  priority
-                  style={{ width: "100%", height: "auto" }}
-                />
-              </a>
+              <Link href="/" legacyBehavior>
+                <a className="mb-5.5 inline-block">
+                  <Image
+                    className="hidden dark:block"
+                    src="/images/logo/logo.svg"
+                    alt="Logo"
+                    height={0}
+                    width={0}
+                    priority
+                    style={{ width: "100%", height: "auto" }}
+                  />
+                  <Image
+                    className="dark:hidden"
+                    src="/images/logo/logo-dark.svg"
+                    alt="Logo"
+                    height={0}
+                    width={0}
+                    priority
+                    style={{ width: "100%", height: "auto" }}
+                  />
+                </a>
+              </Link>
 
               <p className="font-medium 2xl:px-20">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit

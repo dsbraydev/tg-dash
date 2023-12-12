@@ -1,3 +1,4 @@
+import Link from "next/link";
 const SignUpForm = () => {
   return (
     <div className="w-full border-stroke dark:border-strokedark xl:w-1/2 xl:border-l-2">
@@ -192,9 +193,9 @@ const SignUpForm = () => {
           <div className="mt-6 text-center">
             <p className="font-medium">
               Already have an account?
-              <a href="signin.html" className="text-primary">
-                Sign in
-              </a>
+              <Link href="/signin" legacyBehavior>
+                <a className="text-primary">Sign in</a>
+              </Link>
             </p>
           </div>
         </form>
